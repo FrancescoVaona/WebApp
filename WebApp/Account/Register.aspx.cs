@@ -3,11 +3,23 @@ using System;
 using System.Linq;
 using System.Web.UI;
 using WebApp;
+using System.Data.OleDb;
+//clausula using per usare le stored procedure
+using System.Data.SqlClient;
+//clausula using per usare le sqlCommand
+
 
 public partial class Account_Register : Page
 {
-    protected void CreateUser_Click(object sender, EventArgs e)
+    public void CreateUser_Click(object sender, EventArgs e)
     {
+
+        // Create a connection object
+        OleDbConnection dbConn = new OleDbConnection("Provider=SQLOLEDB;Data Source=edu-f01;User Id=quintadi;Password=quintadi;");
+        dbConn.Open();
+
+        SqlCommand cmd = new SqlCommand("i18.createUser", dbConn);
+
         var manager = new UserManager();
         var user = new ApplicationUser() { UserName = UserName.Text };
         var nome = Nome.Text;
