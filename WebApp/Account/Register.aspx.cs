@@ -17,7 +17,7 @@ public partial class Account_Register : Page
         var cognome = Cognome.Text;
         var password = Password.Text;
         var username = UserName.Text;
-        var email = "email2@gmail.com";
+        var email = Email.Text;
 
         string connectionString = "Provider=SQLOLEDB;Data Source=edu-f01;User Id=quintadi;Password=quintadi;"; // sostituire con la stringa di connessione corretta
 
@@ -27,9 +27,17 @@ public partial class Account_Register : Page
             OleDbCommand comando = connection.CreateCommand();
             comando.CommandText = $"EXEC i18.createUser @username = '{username}', @password = '{password}', @nome = '{nome}', @cognome = '{cognome}', @email = '{email}'";
             //esegui la lettura di "Comando"
-            //OleDbDataReader reader = comando.ExecuteReader();
+            OleDbDataReader reader = comando.ExecuteReader();
 
         }
+        // Reinizializza i campi del form a vuoti
+        Nome.Text = "";
+        Cognome.Text = "";
+        UserName.Text = "";
+        Email.Text = "";
+        Password.Text = "";
+        ConfirmPassword.Text = "";
+
     }
 }
 
