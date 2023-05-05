@@ -47,3 +47,43 @@ CREATE TABLE i18.Utenti
     isAdministrator bit DEFAULT 0,
     isSuspended bit DEFAULT 0
 );
+
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
+
+--creazione stored procedure per il login(return 0 se è sbagliato e 1 se è corretto)
+CREATE PROCEDURE i18.loginUser
+    @username nvarchar(20),
+    @password nvarchar(12)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    -- Verifica se l'utente esiste già
+    IF EXISTS (SELECT *
+    FROM i18.Utenti
+    WHERE username = @username AND password = @password AND isAdministrator = 1)
+BEGIN
+        SELECT 3;
+        RETURN;
+    END
+ELSE IF EXISTS (SELECT *
+    FROM i18.Utenti
+    WHERE username = @username AND password = @password AND isSuspended = 1)
+BEGIN
+        SELECT 4;
+        RETURN;
+    END
+ELSE IF EXISTS (SELECT *
+    FROM i18.Utenti
+    WHERE username = @username AND password = @password)
+BEGIN
+        SELECT 1;
+    END
+ELSE
+BEGIN
+        SELECT 0;
+        RETURN;
+    END
+
+END
+GO
