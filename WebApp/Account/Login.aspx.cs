@@ -7,6 +7,7 @@ using WebApp;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.OleDb;
+using System.Windows.Forms;
 //clausula using per usare le stored procedure
 using System.Data.SqlClient;
 //clausula using per usare le sqlCommand
@@ -44,13 +45,27 @@ public partial class Account_Login : Page
             reader.Close();
             int result = (int)comando.ExecuteScalar();
 
-            if (result == 1)
+            //se login fallito
+            if (result == 0)
             {
                 // Fai qualcosa se il risultato è 1
+
+            }
+            //se login effettuato
+            else if (result == 1)
+            {
                 UserName.Text = "dasdsa";
                 Response.Redirect("~/Default.aspx");
+                // Fai qualcos'altro se il risultato è 0
             }
-            else if (result == 0)
+            //se sospeso
+            else if (result == 2)
+            {
+                // mostra una finestra a comprarsa che dice che l'utente è sospeso
+
+            }
+            //se amministratore
+            else if (result == 3)
             {
                 // Fai qualcos'altro se il risultato è 0
             }
