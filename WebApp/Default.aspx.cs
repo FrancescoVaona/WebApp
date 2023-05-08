@@ -15,9 +15,10 @@ public partial class _Default : Page
         // Personalizza la visualizzazione in base al nome utente
         if (!string.IsNullOrEmpty(username))
         {
-            // Esegui le operazioni di personalizzazione
-            // ad esempio, puoi impostare il testo di un controllo Label
             WelcomeLabel.Text = "Benvenuto, " + username + "!";
+            ProfileLink.NavigateUrl = "~/Contact.aspx"; // Imposta l'URL corretto per il collegamento
+            ProfileLink.Text = "Vai alla mia area personale";
+
         }
     }
 }
