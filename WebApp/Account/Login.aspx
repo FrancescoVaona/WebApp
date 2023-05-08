@@ -31,6 +31,9 @@
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="Il campo Password è obbligatorio." />
                         </div>
                     </div>
+                    <div style="font-size: 20px; color: red; font-weight: bold;">
+                        <asp:Label ID="ResponseMessage" runat="server"></asp:Label>
+                    </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">

@@ -7,7 +7,6 @@ using WebApp;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.OleDb;
-using System.Windows.Forms;
 //clausula using per usare le stored procedure
 using System.Data.SqlClient;
 //clausula using per usare le sqlCommand
@@ -48,32 +47,32 @@ public partial class Account_Login : Page
             //se login fallito
             if (result == 0)
             {
-                // Fai qualcosa se il risultato è 1
+                // Visualizza una riga di testo rossa dicendo che il login è fallito
+                ResponseMessage.Text = "Login fallito. Riprova.";
 
             }
-            //se login effettuato
+            //se login avvenuto con successo
             else if (result == 1)
             {
-                UserName.Text = "dasdsa";
+                Session["username"] = username;
                 Response.Redirect("~/Default.aspx");
                 // Fai qualcos'altro se il risultato è 0
-            }
-            //se sospeso
-            else if (result == 2)
-            {
-                // mostra una finestra a comprarsa che dice che l'utente è sospeso
-
             }
             //se amministratore
             else if (result == 3)
             {
+                Session["username"] = username + " (admin)";
+                Response.Redirect("~/Default.aspx");
+            }
+            //se sospeso
+            else if (result == 4)
+            {
                 // Fai qualcos'altro se il risultato è 0
+                ResponseMessage.Text = "Utente sospeso, contatta l'amministrazione";
             }
         }
         // Reinizializza i campi del form a vuoti
         UserName.Text = "";
         Password.Text = "";
-
-
     }
 }
