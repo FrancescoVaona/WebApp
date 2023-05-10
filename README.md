@@ -12,3 +12,4 @@ web App per registrazione e login di un utente e il suo reindirizzamento alla pa
 
 --creazione di pagine dinamiche che permettono, una volta essere entrati con il login, la personalizzazione della pagina per quello specifico utente
 --fare in modo che. alla registrazione di un utente, se registrazione effettuata correttamente si visualizzi: 'benvenuto, effettua il login' con un link sulla parola login in modo che riporti alla pagina login.aspx
+ciao
