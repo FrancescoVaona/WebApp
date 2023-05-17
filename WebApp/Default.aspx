@@ -2,11 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div style="float: right; font-size: 20px; color: grey; font-weight: bold;">
-        <asp:Label ID="WelcomeLabel" runat="server"></asp:Label>
-        <br />
-        <asp:HyperLink ID="ProfileLink" runat="server"></asp:HyperLink>
-    </div>
     <br />
     <div class="jumbotron">
         <h1>ASP.NET</h1>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 
 public partial class SiteMaster : MasterPage
 {
@@ -66,11 +67,17 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        String user = (String)HttpContext.Current.Session["UserLogged"];
+        if (user != null)
+        {
+            Context.User = new GenericPrincipal(new GenericIdentity(user), new string[0]);
+        }
     }
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
-        Context.GetOwinContext().Authentication.SignOut();
+        Session.Abandon();
+        Context.User = new GenericPrincipal(new GenericIdentity(String.Empty), new string[0]);
+        Response.Redirect("~");
     }
 }
