@@ -55,14 +55,14 @@ public partial class Account_Login : Page
             else if (result == 1)
             {
                 Session.Add("UserLogged", username);
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Account/Private.aspx");
                 // Fai qualcos'altro se il risultato è 0
             }
             //se amministratore
             else if (result == 3)
             {
                 Session.Add("UserLogged", username + " (admin)");
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("~/Account/Private.aspx");
             }
             //se sospeso
             else if (result == 4)
