@@ -80,7 +80,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Applicazione ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Applicazione ASP.NET - developer: Vaona Francesco</p>
             </footer>
         </div>
     </form>
